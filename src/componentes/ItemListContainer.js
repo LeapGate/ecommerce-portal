@@ -1,10 +1,10 @@
 const ItemListContainer = (props) => {
-    
-    const greeting = "Buenas! Como estas?!"
-    
+    console.log(props.greetings)
     return (
-        <p>{props.greeting}</p>
-        
+        <>
+          <p>{props.greeting}</p>
+          <p></p>
+        </>
     )
   }
   

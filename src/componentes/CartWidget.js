@@ -1,10 +1,11 @@
 
 const CartWidget = () => {
     return (
-        <span className = "material-icons-outlined">
-            shopping_cart
-        </span>
+        <span class="material-symbols-outlined">
+        shopping_cart
+        </span> 
     )
+    
   }
 
 export default CartWidget
