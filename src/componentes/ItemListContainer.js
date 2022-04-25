@@ -1,9 +1,14 @@
+import ItemCount from "./ItemCount"
+
 const ItemListContainer = (props) => {
     
     return (
-        <p className="main">{props.greetings}</p>
-    )
-  }
+      <main>
+        <p>{props.greetings}</p>
+        <ItemCount/>
+      </main>
+      )
+    }
   
 
 export default ItemListContainer
