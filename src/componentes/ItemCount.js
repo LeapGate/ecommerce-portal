@@ -17,6 +17,10 @@ const ItemCount = ({stock,initial,onAdd}) => {
         }
     }
 
+    const confirmar = () => {
+        onAdd(contador)
+    }
+
     
      
 
@@ -25,7 +29,7 @@ const ItemCount = ({stock,initial,onAdd}) => {
         <p> Compra : {contador}</p>
         <button onClick={aumentarContador}> Aumentar</button>
         <button onClick={decrementarContador}> Disminuir</button>
-        <button onClick={onAdd}>Comprar</button>
+        <button onClick={confirmar}>Comprar</button>
     </>
   )
 }
