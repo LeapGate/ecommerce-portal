@@ -21,6 +21,9 @@ a {
     
 #root > main {
     flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     }
     
 
@@ -40,3 +43,4 @@ a {
     align-items: center;
     nav {a {margin-left: 2rem;}}
 }
+
