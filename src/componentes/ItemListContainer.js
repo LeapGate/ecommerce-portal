@@ -9,6 +9,7 @@ const ItemsBaseDatos = [
     nombre: "microfono",
     precio : 500,
     stock : 10,
+    img : "../public/microfo1.jpeg"
   },
   {
     id: 2,

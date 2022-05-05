@@ -24,7 +24,12 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    flex-direction: row;
+    .stylo-width{
+        max-width: 18rem;
     }
+    }
+
     
 
 
@@ -43,4 +48,5 @@ a {
     align-items: center;
     nav {a {margin-left: 2rem;}}
 }
+
 
