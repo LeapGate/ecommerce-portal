@@ -48,5 +48,18 @@ a {
     align-items: center;
     nav {a {margin-left: 2rem;}}
 }
+.card-contenedor{
+    display: block;
+    width: 100%;
+    background-color: aqua;
+    
+}
+
+.detalle-item{
+    display: flex;
+    position: relative;
+    max-width: 50%;
+    left: 30%;
+}
 
 
