@@ -1,35 +1,52 @@
 import ItemDetail from "./ItemDetail"
 import { useState, useEffect } from "react"
 
-const ItemsBaseDatos = [
+const itemsBaseDatos = [
   {
     id: 1,
     nombre: "microfono",
-    precio : 500,
+    precio : 1000,
+    categoria: "electronica",
     stock : 10,
-    img : "../public/microfo1.jpeg"
   },
   {
     id: 2,
     nombre:"Monitor",
-    precio : 1500, 
+    precio : 6000,
+    categoria: "electronica",
     stock : 15 
   },
   {
     id: 3,
-    nombre:"monitor", 
-    precio :3000, 
+    nombre:"Pantalon", 
+    precio :1500, 
+    categoria: "ropa",
     stock : 5 
   },
   {
     id: 4,
-    nombre:"Parlantes", 
+    nombre:"Remera", 
     precio :2000, 
+    categoria: "ropa",
+    stock : 20 
+  },
+  {
+    id: 5,
+    nombre:"Fiat 1", 
+    precio :2000, 
+    categoria: "vehiculo",
+    stock : 20 
+  },
+  {
+    id: 6,
+    nombre:"Audi A7", 
+    precio :2000, 
+    categoria: "vehiculo",
     stock : 20 
   }
 ]
 
-const ItemDetailContainer = (props) => {
+const ItemDetailContainer = () => {
       const [cargando, setCargando] = useState(true)
       const [items, setItems] = useState({})
 
@@ -37,13 +54,14 @@ const ItemDetailContainer = (props) => {
         const promesa = new Promise((res)=>{
           setTimeout(() =>{
             
-            res(ItemsBaseDatos)
+            res(itemsBaseDatos)
     
           }, 4000)
         })
+        promesa
         .then(() => {
           setCargando(false)
-          setItems(ItemsBaseDatos)
+          setItems(itemsBaseDatos)
           
         })
         .catch((error) => {
@@ -59,7 +77,7 @@ const ItemDetailContainer = (props) => {
       }else{
         return(
           <div className="detalle-item">
-            <ItemDetail producto = {items[1]}/>
+            <ItemDetail item = {items[1]}/>
           </div>
         )
       }

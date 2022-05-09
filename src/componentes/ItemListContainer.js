@@ -2,65 +2,103 @@
 import ItemList from "./ItemList"
 
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 
-const ItemsBaseDatos = [
+const itemsBaseDatos = [
   {
     id: 1,
     nombre: "microfono",
-    precio : 500,
+    precio : 1000,
+    categoria: "electronica",
     stock : 10,
-    img : "../public/microfo1.jpeg"
   },
   {
     id: 2,
     nombre:"Monitor",
-    precio : 1500, 
+    precio : 6000,
+    categoria: "electronica",
     stock : 15 
   },
   {
     id: 3,
-    nombre:"monitor", 
-    precio :3000, 
+    nombre:"Pantalon", 
+    precio :1500, 
+    categoria: "ropa",
     stock : 5 
   },
   {
     id: 4,
-    nombre:"Parlantes", 
+    nombre:"Remera", 
     precio :2000, 
+    categoria: "ropa",
+    stock : 20 
+  },
+  {
+    id: 5,
+    nombre:"Fiat 1", 
+    precio :2000, 
+    categoria: "vehiculo",
+    stock : 20 
+  },
+  {
+    id: 6,
+    nombre:"Audi A7", 
+    precio :2000, 
+    categoria: "vehiculo",
     stock : 20 
   }
 ]
 
+
+
 const ItemListContainer = (props) => {
 
   const [items, setItems] = useState([])
-  
+  const {nombreCategoria}= useParams()
   useEffect(() => {
+    if(nombreCategoria ==undefined){
 
-    const promesa = new Promise((res)=>{
-      setTimeout(() =>{
+      const pedido = new Promise((res)=>{
         
-        res(ItemsBaseDatos)
+        setTimeout(() =>{
 
-      }, 2000)
-    })
-    .then((contenido) => {
+          res(itemsBaseDatos)
+  
+        }, 2000)
+      })
+      pedido
+      .then((contenido) => {
+        setItems(itemsBaseDatos)
+      })
+      .catch((error) => {
+        console.log("Ha ocurrido un error")
+      })
 
-      //console.log("ha salido bien")
+    }else{
+      const pedido = new Promise((res)=>{
+        
+        setTimeout(() =>{
 
-      setItems(ItemsBaseDatos)
-    })
-    .catch((error) => {
-      console.log("Ha ocurrido un error")
-    })
+          res(itemsBaseDatos)
+  
+        }, 2000)
+      })
+      pedido
+      .then((contenido) => {
+        
+        setItems(itemsBaseDatos.filter(c => c.categoria == nombreCategoria))
+      })
+      .catch((error) => {
+        console.log("Ha ocurrido un error")
+      })
+
+    }
 
 
-  },[])
+  },[nombreCategoria])
 
     return (
-      <main>
         <ItemList  items = {items} />
-      </main>
       )
     }
   
