@@ -1,5 +1,6 @@
 import ItemDetail from "./ItemDetail"
 import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 
 const itemsBaseDatos = [
   {
@@ -49,7 +50,8 @@ const itemsBaseDatos = [
 const ItemDetailContainer = () => {
       const [cargando, setCargando] = useState(true)
       const [items, setItems] = useState({})
-
+      const {id}= useParams()
+      
       useEffect(() =>{
         const promesa = new Promise((res)=>{
           setTimeout(() =>{
@@ -61,7 +63,7 @@ const ItemDetailContainer = () => {
         promesa
         .then(() => {
           setCargando(false)
-          setItems(itemsBaseDatos)
+          setItems(itemsBaseDatos.filter(c => c.id == id))
           
         })
         .catch((error) => {
@@ -77,7 +79,7 @@ const ItemDetailContainer = () => {
       }else{
         return(
           <div className="detalle-item">
-            <ItemDetail item = {items[1]}/>
+            <ItemDetail item = {items[0]}/>
           </div>
         )
       }

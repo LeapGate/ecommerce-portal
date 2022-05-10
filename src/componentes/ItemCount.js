@@ -1,13 +1,12 @@
 import { useState } from "react"
 
-const ItemCount = ({stock,initial,onAdd}) => {
+const ItemCount = ({stock,initial, compra}) => {
     const [contador,setContador] = useState(initial)
 
     const aumentarContador = () =>{
         
         if(contador < stock){
               setContador(contador + 1 )
-              console.log(contador)  
         }
     }
 
@@ -18,7 +17,7 @@ const ItemCount = ({stock,initial,onAdd}) => {
     }
 
     const confirmar = () => {
-        onAdd(contador)
+        compra(contador)
     }
 
     
@@ -27,9 +26,9 @@ const ItemCount = ({stock,initial,onAdd}) => {
   return (
     <>
         <p> Compra : {contador}</p>
-        <button onClick={aumentarContador}> Aumentar</button>
-        <button onClick={decrementarContador}> Disminuir</button>
-        <button onClick={confirmar}>Comprar</button>
+        <button onClick={aumentarContador} className ="btn btn-danger"> Aumentar</button>
+        <button onClick={decrementarContador}className ="btn btn-danger"> Disminuir</button>
+        <button onClick={confirmar}className ="btn btn-dark">confirmar</button>
     </>
   )
 }
