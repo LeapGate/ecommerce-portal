@@ -61,7 +61,7 @@ const Cart = ({children}) => {
     <div>
       <p>Carrito</p>
       <p>${precioTotal}</p>
-      {carrito}
+     
     </div>
   )
 }
