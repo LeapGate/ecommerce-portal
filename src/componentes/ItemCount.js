@@ -1,7 +1,10 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+
 
 const ItemCount = ({stock,initial, compra}) => {
     const [contador,setContador] = useState(initial)
+
+
 
     const aumentarContador = () =>{
         

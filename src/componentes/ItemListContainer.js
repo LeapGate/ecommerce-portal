@@ -17,6 +17,7 @@ const itemsBaseDatos = [
     nombre:"Monitor",
     precio : 6000,
     categoria: "electronica",
+    cantidad: 0,
     stock : 15 
   },
   {
