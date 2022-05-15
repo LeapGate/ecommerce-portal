@@ -2,7 +2,7 @@ import ItemDetailContainer from "./ItemDetailContainer"
 import ItemListContainer from "./ItemListContainer"
 import Cart from "./Cart"
 import { Routes, Route } from "react-router-dom"
-import Cart from "./Cart"
+
 const Main = () => {
   return (
       <main>
