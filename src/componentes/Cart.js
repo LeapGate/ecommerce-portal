@@ -1,68 +1,43 @@
+
 import { useContext, useState, useEffect } from "react"
 import { contexto } from "./CartContext"
+import { Link } from "react-router-dom"
 
-const itemsBaseDatos = [
-  {
-    id: 1,
-    nombre: "microfono",
-    precio : 1000,
-    categoria: "electronica",
-    stock : 10,
-  },
-  {
-    id: 2,
-    nombre:"Monitor",
-    precio : 6000,
-    categoria: "electronica",
-    cantidad: 0,
-    stock : 15 
-  },
-  {
-    id: 3,
-    nombre:"Pantalon", 
-    precio :1500, 
-    categoria: "ropa",
-    stock : 5 
-  },
-  {
-    id: 4,
-    nombre:"Remera", 
-    precio :2000, 
-    categoria: "ropa",
-    stock : 20 
-  },
-  {
-    id: 5,
-    nombre:"Fiat 1", 
-    precio :2000, 
-    categoria: "vehiculo",
-    stock : 20 
-  },
-  {
-    id: 6,
-    nombre:"Audi A7", 
-    precio :2000, 
-    categoria: "vehiculo",
-    stock : 20 
+
+
+const Cart = () => {
+  const {carrito,precioTotal, eliminarProducto, vaciarCart} = useContext(contexto)
+  
+
+    const eliminarItem = (id) =>{
+      eliminarProducto(id)
+      
   }
-]
 
-const Cart = ({children}) => {
-  const [compra, setCompra] = useState([])
-  const {carrito,cantidadTotal,precioTotal, eliminarProducto, vaciarCart} = useContext(contexto)
+  const handleTerminar = () =>{
+    vaciarCart()
+  }
+  
 
-  useEffect(() => {
-    setCompra(carrito)
-
-    
-  },[])
 
   return (
-    <div>
-      <p>Carrito</p>
-      <p>${precioTotal}</p>
-     
-    </div>
+    <>
+      {carrito.length  > 0 ? carrito.map((item,indice)=>{
+        return <main className="detalle-cart">
+                <div className="card-body bg-secondary item-cart">
+                  <h3 className="card-title">Nombre: {item.item}</h3>
+                  <p className="card-text"> Cantidad:{item.cantidad}</p>
+                  <p className="card-text"> precio:{item.precio * item.cantidad}</p>
+                  <button onClick = {eliminarItem} className="btn btn-danger">Eliminar</button>
+                </div>
+              </main>
+      }): <Link to="/"><button className="btn btn-primary"> Ir a la tienda</button></Link>}
+
+      <p className="item-precio" > Total de compra : ${precioTotal}</p>
+
+      <button onClick = {handleTerminar}className="btn btn-secondary btn-compra"> Terminar</button>
+
+    </>
   )
 }
 

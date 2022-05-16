@@ -9,9 +9,9 @@ const CartWidget = () => {
       <Link to="./cart">
         <span className="material-symbols-outlined">
         shopping_cart
-        
         </span>
-        {cantidadTotal}
+        
+        { cantidadTotal ? cantidadTotal : null} 
       </Link>
       
         

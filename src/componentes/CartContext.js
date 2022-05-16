@@ -17,7 +17,7 @@ const { Provider} =  contexto
             const newCarrito = [...carrito];
 
             for ( const producto of newCarrito){
-                if( producto.id === item.id){
+                if( producto.id === producto.id){
                     producto.cantidad = producto.cantidad + cantidad;
                 }
             }
@@ -49,6 +49,8 @@ const { Provider} =  contexto
 
     const vaciarCart = () => {
         setCarrito([])
+        setCantidadTotal([])
+        setPrecioTotal([])
     }
 
     const estaEnCart = (id) =>{
@@ -69,7 +71,7 @@ const { Provider} =  contexto
     }
 
     return(
-        <Provider value = {{carrito,cantidadTotal,precioTotal, eliminarProducto, vaciarCart, agregarProducto}}>
+        <Provider value = {{carrito,precioTotal,cantidadTotal, eliminarProducto, vaciarCart, agregarProducto}}>
             {children}
         </Provider>
     )
