@@ -45,6 +45,7 @@ const { Provider} =  contexto
     const eliminarProducto = (id) =>{
         const newCarrito = [...carrito].map(element => element.id !== id);
         setCarrito(newCarrito);
+        
     }
 
     const vaciarCart = () => {

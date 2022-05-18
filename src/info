@@ -1,0 +1,41 @@
+/* 
+    if(nombreCategoria ==undefined){
+
+      const pedido = new Promise((res)=>{
+        
+        setTimeout(() =>{
+
+          res(itemsBaseDatos)
+  
+        }, 2000)
+      })
+      pedido
+      .then((contenido) => {
+        setItems(itemsBaseDatos)
+      })
+      .catch((error) => {
+        console.log("Ha ocurrido un error")
+      })
+
+    }else{
+      const pedido = new Promise((res)=>{
+        
+        setTimeout(() =>{
+
+          res(itemsBaseDatos)
+  
+        }, 2000)
+      })
+      pedido
+      .then((contenido) => {
+        
+        setItems(itemsBaseDatos.filter(c => c.categoria == nombreCategoria))
+      })
+      .catch((error) => {
+        console.log("Ha ocurrido un error")
+      })
+
+    }
+
+
+  } */

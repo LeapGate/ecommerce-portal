@@ -4,51 +4,8 @@ import ItemList from "./ItemList"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
-const itemsBaseDatos = [
-  {
-    id: 1,
-    nombre: "microfono",
-    precio : 1000,
-    categoria: "electronica",
-    stock : 10,
-  },
-  {
-    id: 2,
-    nombre:"Monitor",
-    precio : 6000,
-    categoria: "electronica",
-    cantidad: 0,
-    stock : 15 
-  },
-  {
-    id: 3,
-    nombre:"Pantalon", 
-    precio :1500, 
-    categoria: "ropa",
-    stock : 5 
-  },
-  {
-    id: 4,
-    nombre:"Remera", 
-    precio :2000, 
-    categoria: "ropa",
-    stock : 20 
-  },
-  {
-    id: 5,
-    nombre:"Fiat 1", 
-    precio :2000, 
-    categoria: "vehiculo",
-    stock : 20 
-  },
-  {
-    id: 6,
-    nombre:"Audi A7", 
-    precio :2000, 
-    categoria: "vehiculo",
-    stock : 20 
-  }
-]
+import {db} from "../firebase"
+import { collection, getDocs } from "firebase/firestore"
 
 
 
@@ -57,46 +14,61 @@ const ItemListContainer = (props) => {
   const [items, setItems] = useState([])
   const {nombreCategoria}= useParams()
   useEffect(() => {
+
     if(nombreCategoria ==undefined){
 
-      const pedido = new Promise((res)=>{
-        
-        setTimeout(() =>{
+        const itemsCollection = collection(db,"items")
+        const consulta = getDocs(itemsCollection)
+    
+        consulta
+        .then((res)=>{
 
-          res(itemsBaseDatos)
-  
-        }, 2000)
-      })
-      pedido
-      .then((contenido) => {
-        setItems(itemsBaseDatos)
-      })
-      .catch((error) => {
-        console.log("Ha ocurrido un error")
-      })
+          const productos = res.docs.map(doc => {
 
-    }else{
-      const pedido = new Promise((res)=>{
-        
-        setTimeout(() =>{
+            const productosId = doc.data()
+            productosId.id = doc.id
+            
+            return productosId
+            
+          })
+          
+          setItems(productos)
+            
+    
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
 
-          res(itemsBaseDatos)
-  
-        }, 2000)
-      })
-      pedido
-      .then((contenido) => {
-        
-        setItems(itemsBaseDatos.filter(c => c.categoria == nombreCategoria))
-      })
-      .catch((error) => {
-        console.log("Ha ocurrido un error")
-      })
+    }else { 
+      
+            const itemsCollection = collection(db,"items")
+            const consulta = getDocs(itemsCollection)
+            
 
-    }
+          consulta
+          .then((res) => {
+              const productos = res.docs.map(doc => {
 
+              const productosId = doc.data()
+              productosId.id = doc.id
+              
+              return productosId
+              
+            })
+            
+            setItems(productos.filter(c => c.categoria == nombreCategoria))
 
-  },[nombreCategoria])
+          })
+
+            
+          .catch((error) => {
+            console.log(error)
+          })
+
+        }
+
+    },[nombreCategoria])
 
     return (
         <ItemList  items = {items} />
