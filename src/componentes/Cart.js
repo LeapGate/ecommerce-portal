@@ -12,7 +12,7 @@ const Cart = () => {
     
     const eliminarItem = (id) =>{
       eliminarProducto(id)
-      
+     
       
   }
 

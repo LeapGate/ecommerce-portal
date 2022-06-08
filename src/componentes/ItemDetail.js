@@ -13,20 +13,6 @@ const ItemDetail = ({item}) => {
 
   
   
-  
-  useEffect(() => {
-
-    if(cantidad !== 0){
-      console.log("Tiene algo")
-    }else{
-      console.log("vacio")
-    }
-  
-    return () => {
-      
-    }
-  }, [cantidad])
-  
   const handleCompra = (contador) =>{
     setCantidad(contador)
     agregarProducto(item, cantidad)
